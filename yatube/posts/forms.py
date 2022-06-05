@@ -3,6 +3,8 @@ from django import forms
 
 
 class PostForm(forms.ModelForm):
-    class Meta:
+    class Meta():
         model = Post
-        fields = ['text', 'group']
+        labels = {'group': 'Группа', 'text': 'Напишите свой пост'}
+        help_texts = {'group': 'Выберите группу', 'text': 'Введите ссообщение'}
+        fields = ('text', 'group')

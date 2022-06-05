@@ -1,7 +1,5 @@
-from django.utils import timezone
+from datetime import datetime
 
 
 def year(request):
-    """Добавляет переменную с текущим годом."""
-    now = timezone.now()
-    return {'now': now, }
+    return {'year': datetime.now().year}
