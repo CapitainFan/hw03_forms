@@ -12,16 +12,15 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'posts': post_list,
-        'year' : datetime.now().year,
+        'year': datetime.now().year,
         'page_obj': page_obj,
     }
-    return render(request, 'posts/index.html', context) 
+    return render(request, 'posts/index.html', context)
 
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     posts = group.posts.all()
-    paginator = Paginator(posts, 10)
     context = {
         'group': group,
         'posts': posts,
@@ -49,6 +48,7 @@ def post_detail(request, post_id):
     }
     return render(request, 'posts/post_detail.html', context)
 
+
 def post_create(request):
     form = PostForm(request.POST or None)
     context = {
@@ -62,6 +62,7 @@ def post_create(request):
         return render(request, 'posts/create_post.html', context)
     else:
         return redirect('users:login')
+
 
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)

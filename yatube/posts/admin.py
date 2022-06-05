@@ -21,10 +21,9 @@ class PostAdmin(admin.ModelAdmin):
 class GroupAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
-        'title', 
-        'slug', 
+        'title',
+        'slug',
         'description',
     )
     search_fields = ('title',)
     empty_value_display = '-пусто-'
-
