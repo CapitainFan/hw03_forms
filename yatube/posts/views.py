@@ -64,7 +64,7 @@ def post_create(request):
         post.author = request.user
         post.save()
         return redirect('posts:profile', username=request.user.username)
-    return render(request, 'posts/create_or_update.html', {'form': form})
+    return render(request, 'posts/create.html', {'form': form})
 
 
 @login_required
@@ -78,6 +78,6 @@ def post_edit(request, post_id):
         return redirect('posts:post_detail', post_id=post_id)
     return render(
         request,
-        'posts/create_or_update.html',
+        'posts/create.html',
         {'post': post, 'form': form, 'is_edit': True}
     )
