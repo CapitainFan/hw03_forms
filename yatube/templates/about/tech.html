@@ -1,11 +1,10 @@
 <!-- templates/about/tech.html -->
 {% extends "base.html" %}
 {% block title %}Технологии{% endblock %}
-{% block header %}Технологии{% endblock %}
 {% block content %}
 {% comment %} Колонки с отступом сверху и снизу {% endcomment %}
 <div class="row">
-  <h2>Вот что я умею:</h2>
+  <h1>Вот что я умею</h1>
   {% comment %}
     Боковой блок со списком технологий 
     Займет всю ширину блока на мобильном
@@ -13,20 +12,11 @@
   {% endcomment %}
   <aside class="col-12 col-md-3">
     <ul class="list-group list-group-flush">
-      <h3 class="list-group-item">
-        Python:
-      </h3>
-      <li>
-        Декораторы
+      <li class="list-group-item">
+        Python
       </li>
-      <h3 class="list-group-item">
-        Django:
-      </h3>
-      <li>
-        Paginator
-      </li>
-      <li>
-        Контекст-процессоры
+      <li class="list-group-item">
+        Django
       </li>
     </ul>
   </aside>
@@ -39,4 +29,4 @@
     <p>Текст страницы "Технологии"</p>
   </article>
 </div>
-{% endblock %}
+{% endblock %} 
