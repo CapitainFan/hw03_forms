@@ -10,10 +10,10 @@
     </ul>
     <p>{{ post.text|linebreaksbr }}</p>
     <a href="{% url 'posts:post_detail' post.id %}">подробная информация</a>
-  </article>
-  {% if post.group_id %}
-    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-  {% endif %}
+    {% if post.group %}
+      <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    {% endif %}
+  </article>  
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
 {% include 'includes/paginator.html' %}

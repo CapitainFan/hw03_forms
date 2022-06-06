@@ -11,9 +11,7 @@ def index(request):
     paginator = Paginator(post_list, settings.NUMBER_OF_POSTS)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {
-        'page_obj': page_obj,
-    }
+    context = {'page_obj': page_obj, }
     return render(request, 'posts/index.html', context)
 
 
@@ -23,15 +21,8 @@ def group_posts(request, slug):
     paginator = Paginator(posts, settings.NUMBER_OF_POSTS)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {
-        'page_obj': page_obj,
-        'group': group,
-    }
-    return render(
-        request,
-        'posts/group_list.html',
-        context
-    )
+    context = {'page_obj': page_obj, 'group': group, }
+    return render(request, 'posts/group_list.html', context)
 
 
 def profile(request, username):
@@ -40,18 +31,13 @@ def profile(request, username):
     paginator = Paginator(posts, settings.NUMBER_OF_POSTS)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {
-        'page_obj': page_obj,
-        'author': user,
-    }
+    context = {'page_obj': page_obj, 'author': user, }
     return render(request, 'posts/profile.html', context)
 
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    context = {
-        'post': post,
-    }
+    context = {'post': post, }
     return render(request, 'posts/post_detail.html', context)
 
 
@@ -75,8 +61,5 @@ def post_edit(request, post_id):
     if form.is_valid():
         form.save()
         return redirect('posts:post_detail', post_id=post_id)
-    return render(
-        request,
-        'posts/create.html',
-        {'post': post, 'form': form, 'is_edit': True}
-    )
+    return render(request, 'posts/create.html', {'post': post,
+                  'form': form, 'is_edit': True})
