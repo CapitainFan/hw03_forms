@@ -8,7 +8,7 @@
         <li class="list-group-item">
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
         </li>
-        {% if post.group_id %}
+        {% if post.group %}
           <li class="list-group-item">
             Группа: {{ post.group.slug }}
             <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
@@ -32,10 +32,8 @@
         <p>
           {{ post.text }}
         </p>
-        {% if user.is_authenticated %}
-          {% if post.author == user %}
-            <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">редактировать запись</a>
-          {% endif %}
+        {% if user.is_authenticated and post.author == user %}
+          <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">редактировать запись</a>
         {% endif %}
     </article>
   </div> 
